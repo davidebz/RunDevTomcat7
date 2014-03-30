@@ -27,17 +27,6 @@ public class RunDevTomcat7AndGwtDevMode
 {
    public static void main(final String[] args) throws ServletException, LifecycleException, IOException
    {
-      // Search for -war parameter
-      String war = "war";
-      for (int i = 0; i < args.length; i++)
-      {
-         String arg = args[i];
-         if (arg.equals("-war"))
-         {
-            war = args[i + 1];
-         }
-      }
-
       Thread t = new Thread(new Runnable()
       {
          @Override
@@ -51,7 +40,7 @@ public class RunDevTomcat7AndGwtDevMode
       });
       t.start();
 
-      RunDevTomcat7.main(new String[] { "/", war });
+      RunDevTomcat7.main(args);
       System.exit(0);
    }
 }

@@ -31,14 +31,23 @@ public class RunDevTomcat7
    {
       String contextPath = "/";
       String warPath = "war";
-      switch (args.length)
+      int port = 8888;
+
+      for (int i = 0; i < args.length; i++)
       {
-         default:
-         case 2:
-            warPath = args[1];
-         case 1:
-            contextPath = args[0];
-         case 0:
+         String arg = args[i];
+         switch (arg)
+         {
+            case "-war":
+               warPath = args[i + 1];
+            break;
+            case "-port":
+               port = Integer.parseInt(args[i + 1]);
+            break;
+            case "-context":
+               contextPath = args[i + 1];
+            break;
+         }
       }
 
       if (!contextPath.startsWith("/"))
@@ -58,7 +67,6 @@ public class RunDevTomcat7
                          + " associated to path "
                          + warFile.getPath());
 
-      int port = 8888;
       Tomcat tomcat = new Tomcat();
       tomcat.setPort(port);
 

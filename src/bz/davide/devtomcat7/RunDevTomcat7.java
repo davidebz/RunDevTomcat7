@@ -79,7 +79,7 @@ public class RunDevTomcat7
       tomcat.start();
 
       System.out.println("Point browser to: http://localhost:" + port + contextPath);
-      System.out.println("Press any key to shutdown Tomcat 7");
+      System.out.println("Press <enter> key to shutdown Tomcat 7");
       System.in.read();
 
       tomcat.stop();
